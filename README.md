@@ -1,5 +1,5 @@
 # baidu_minprogram_pay
-百度小程序支付
+# 百度小程序支付
 
 
 
@@ -9,8 +9,11 @@
 AlipaySignature.cs：RSA操作类
 BDResponseHandler.cs：主要RSA参数排序、加签和验签
 BDHelper.cs：获取百度的SessionKey(AESDecode和SearchOrderPayStatus暂时还没空测试，建议不要用这个)
-支付下单示例：
+```
 
+### 支付下单示例：
+
+```
 //准备签名参数，不需要排序
 var ht = new Hashtable
 {
@@ -59,10 +62,15 @@ var outPutObj = new
 	bannedChannels = "",  //需要隐藏的支付方式  Alipay BDWallet WeChat
 };
 
+```
 
 
-【支付回调验签】
 
+
+
+### 【支付回调验签示例】
+
+```
 var requHandler = new BDResponseHandler(System.Web.HttpContext.Current, BD_Pay_PublicKey);
 var status = requHandler.GetParameter("status").ToInt32();   //1：未支付；2：已支付；-1：订单取消
 var totalMoney = requHandler.GetParameter("totalMoney").ToInt32();  //订单的实际金额，单位：分
